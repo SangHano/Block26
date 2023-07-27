@@ -23,7 +23,8 @@ const dummyContacts = [
   ];
 
 
-  const ContactList = () => {
+  const ContactList = ({ setSelectedContactId }) => {
+    
     const [contacts, setContacts] = useState([]);;
     useEffect(() => {
         const fetchContacts = async () => {
@@ -39,8 +40,7 @@ const dummyContacts = [
         fetchContacts();
       }, []);
 
-    // Log the state
-    console.log(contacts);
+    
 
     return (
         <table>
@@ -56,7 +56,7 @@ const dummyContacts = [
                     <td>Phone#:</td>
                 </tr>
                 {contacts.map((contact)=>{
-                    return <ContactRow key={contact.id} contact={contact} />;
+                    return <ContactRow key={contact.id} contact={contact} setSelectedContactId={setSelectedContactId}/>;
                 })}
             </tbody>
         </table>
